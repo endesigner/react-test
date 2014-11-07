@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 
 var HotelResult = require('./HotelResult.jsx');
@@ -8,7 +10,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    var i = 0
+    var i = 0;
     this.interval = setInterval(function() {
       // When processing the response of an asynchronous request, be sure to check that the component is still mounted before updating its state by using this.isMounted().
       if (this.isMounted()) {
@@ -26,8 +28,11 @@ module.exports = React.createClass({
   },
 
   createRow: function(text) {
-    return <HotelResult key={text.id} text={text.msg} />
+    return (
+      <HotelResult key={text.id} text={text.msg} />
+    );
   },
+
   render: function() {
     return(
       <div>
