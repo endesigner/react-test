@@ -6,6 +6,18 @@ module.exports = function(grunt) {
       react: {
         files: 'src/*.jsx',
         tasks: ['browserify']
+      },
+      ocean: {
+        files: ['src/*.js', 'test/*-test.js'],
+        tasks: ['test']
+      }
+    },
+
+    jasmine: {
+      src: 'src/**/*.js',
+      options: {
+        vendor: 'vendor/**/*.js',
+        specs: 'test/**/*-test.js'
       }
     },
 
@@ -22,8 +34,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   grunt.registerTask('default', [
     'browserify'
+  ]);
+  grunt.registerTask('test', [
+    'jasmine'
   ]);
 };
